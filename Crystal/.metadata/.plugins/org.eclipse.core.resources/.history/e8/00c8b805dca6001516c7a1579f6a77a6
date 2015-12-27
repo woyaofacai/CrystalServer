@@ -1,0 +1,99 @@
+package com.crystal.servlet.impl;
+
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletException;
+
+import com.crystal.servlet.ServletConfigImpl;
+import com.crystal.servlet.ServletLoader;
+import com.crystal.servlet.ServletManager;
+
+public class ServletManagerImpl implements ServletManager {
+	
+	private Map<String, Servlet> servletsCache = new Hashtable<String, Servlet>();
+	private ServletLoader loader;
+	
+	private Map<String, String> urlNameMap = new HashMap<String, String>();
+	private Map<String, ServletConfigImpl> nameConfMap = new HashMap<String, ServletConfigImpl>();
+	
+	public ServletManagerImpl(String appName) throws MalformedURLException {
+		loader = new URLServletLoader(appName);
+	}
+	
+	public Servlet getServletByURL(String url) throws ServletException {
+		// get servlet's name
+		String name = urlNameMap.get(url);
+		if (name == null) 
+			return null;
+		
+		return getServletByName(name);
+	}
+	
+	public Servlet getServletByName(String name) throws ServletException {
+		Servlet servlet = servletsCache.get(name);
+		if (servlet == null) {
+			ServletConfigImpl config = nameConfMap.get(name);
+			servlet = createServlet(config.getClassName());
+			if(servlet != null) {
+				servlet.init(config);
+				servletsCache.put(name, servlet);
+			}
+		}
+		return servlet;
+	}
+	
+	public Servlet createServlet(String clazzName) {
+		Class<Servlet> clazz = loader.load(clazzName);
+		if(clazz == null)
+			return null;
+		
+		Servlet servlet = null;
+		try {
+			servlet = clazz.newInstance();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return servlet;
+	}
+	
+	public void destroy() {
+		for(Map.Entry<String, Servlet> entry : servletsCache.entrySet()) {
+			Servlet servlet = entry.getValue();
+			servlet.destroy();
+		}
+		servletsCache.clear();
+	}
+
+	@Override
+	public void addServletConfig(String name, String clazzName,
+			Map<String, String> initParams, int loadOnStartup) {
+		ServletConfigImpl config = new ServletConfigImpl(name, clazzName, initParams, null, loadOnStartup);
+		nameConfMap.put(name, config);
+	}
+
+	@Override
+	public void addServletMapping(String url, String name) {
+		urlNameMap.put(url, name);
+	}
+	
+	public void init() {
+		loadOnStartUp();
+	}
+	
+	private void loadOnStartUp() {
+		List<ServletConfigImpl> configs = new ArrayList<ServletConfigImpl>();
+		for(Map.Entry<String, ServletConfigImpl> e : nameConfMap.entrySet()) {
+			e.getValue();
+		}
+		
+	}
+	
+}

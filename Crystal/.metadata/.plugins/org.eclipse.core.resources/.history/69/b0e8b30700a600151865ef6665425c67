@@ -1,0 +1,31 @@
+package com.test;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletException;
+
+import com.crystal.servlet.ServletManager;
+import com.crystal.servlet.impl.DefaultServletManager;
+
+public class Test {
+	public static void main(String[] args) throws ServletException, IOException {
+
+		Scanner scanner = new Scanner(System.in);
+		ServletManager mgr = new DefaultServletManager("HelloWorld");
+		while (true) {
+			String clazzName = scanner.next();
+			if("quit".equals(clazzName))
+				break;
+			
+			Servlet servlet = mgr.getServlet(clazzName);
+			if (servlet != null) {
+				servlet.service(null, null);
+			}
+		}
+		scanner.close();
+		mgr.destroy();
+	}
+
+}

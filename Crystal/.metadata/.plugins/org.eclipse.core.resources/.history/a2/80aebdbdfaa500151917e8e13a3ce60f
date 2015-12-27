@@ -1,0 +1,42 @@
+package com.crystal.servlet.impl;
+
+import java.net.MalformedURLException;
+import java.util.Hashtable;
+import java.util.Map;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletException;
+
+import com.crystal.servlet.ServletLoader;
+import com.crystal.servlet.ServletManager;
+
+public class DefaultServletManager implements ServletManager {
+	
+	private Map<String, Servlet> map = new Hashtable<String, Servlet>();
+	private ServletLoader loader;
+	
+	public DefaultServletManager(String appName) throws MalformedURLException {
+		loader = new URLServletLoader(appName);
+	}
+	
+	public Servlet getServlet(String name) throws ServletException {
+		Servlet servlet = map.get(name);
+		if (servlet == null) {
+			servlet = loader.load(name);
+			if(servlet != null) {
+				servlet.init(null);
+				map.put(name, servlet);
+			}
+		}
+		return servlet;
+	}
+	
+	public void destroy() {
+		for(Map.Entry<String, Servlet> entry : map.entrySet()) {
+			Servlet servlet = entry.getValue();
+			servlet.destroy();
+		}
+		map.clear();
+	}
+	
+}

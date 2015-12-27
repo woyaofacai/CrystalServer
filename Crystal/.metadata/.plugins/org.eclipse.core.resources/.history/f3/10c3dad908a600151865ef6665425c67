@@ -1,0 +1,45 @@
+package com.test.servlets;
+
+import java.io.IOException;
+import java.util.Date;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class TimeServlet implements Servlet{
+
+	
+
+	@Override
+	public ServletConfig getServletConfig() {
+		return null;
+	}
+
+	@Override
+	public String getServletInfo() {
+		return null;
+	}
+
+	@Override
+	public void init(ServletConfig arg0) throws ServletException {
+		System.out.println("TimeServlet is initialized.");
+	}
+
+	@Override
+	public void service(ServletRequest arg0, ServletResponse arg1)
+			throws ServletException, IOException {
+		Date date = new Date();
+		System.out.println("TimeServlet is serving. " + date.toString());
+	}
+	
+	@Override
+	public void destroy() {
+		System.out.println("TimeServlet is destroyed.");
+		
+	}
+	
+	
+}

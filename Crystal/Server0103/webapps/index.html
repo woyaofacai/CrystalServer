@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
+    <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="jquery.fullPage.min.js"></script>
+    <script type="text/javascript" src="vendors/jquery.slimscroll.min.js"></script>
+    <title></title>
+    <style>
+        h1{
+            font-size: 4em;
+            font-family: arial,helvetica;
+            color: #323e5b;
+            margin:0;
+            /*text-shadow: 1px 2px #d2d0d9,2px 4px #00035e;*/
+        }
+
+        #my_resume {
+            font-size : 6em;
+            font-family: fantasy;
+            color: #777791;
+            margin:0;
+        }
+
+        h2
+        {
+            font-size: 3em;
+            font-family: arial,helvetica;
+            color: #49495f;
+            margin: 0;
+        }
+
+        h3
+        {
+            font-size: 2em;
+            font-family: arial,helvetica;
+            color: #49495f;
+            margin: 0;
+        }
+
+        h4
+        {
+            font-size: 1.5em;
+            font-family: arial,helvetica;
+            color: #49495f;
+            margin: 0;
+        }
+
+        .subtitle
+        {
+            font-size : 1.4em;
+            font-family: arial, helvetica;
+            color: #666;
+            margin: 0;
+        }
+
+        .emphasize
+        {
+            color: #0a0a0a;
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+
+        .intro p{
+            color: #fff;
+        }
+
+        /* Centered texts in each section
+        * --------------------------------------- */
+        .section{
+            text-align:center;
+            background-color: #d2d8de;
+        }
+
+        #skills_list {
+            text-align: center;
+            margin : 10px auto;
+            width : 600px;
+        }
+
+        .skill_name
+        {
+            width: 100px;
+            height: 40px;
+            text-align: right;
+            font-family: arial, helvetica;
+            font-size : 1.4em;
+            color: #193e5b;
+        }
+
+        .skill_rect
+        {
+            position:relative;
+        }
+
+        .skill_back_rect
+        {
+            border-radius: 15px;
+            background: #c1c3ca;
+            padding: 0px;
+            width: 500px;
+            height: 30px;
+            margin-left: 20px;
+        }
+
+        .skill_front_rect
+        {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            border-radius: 15px 0px 0px 15px;
+            padding: 0px;
+            width: 0px;
+            height: 30px;
+            margin-left: 20px;
+            background: #235982;
+        }
+
+        .related_tech
+        {
+            font-size : 1.2em;
+            font-family: arial, helvetica;
+            color: #8b8b8b;
+            margin: 0;
+        }
+
+        .col-2
+        {
+            width: 16.66667%;
+            float : left;
+
+        }
+
+        .col-4
+        {
+            width: 33.33333%;
+            float : left;
+            text-align: left;
+        }
+
+        .row {
+            position : relative;
+        }
+
+        .center
+        {
+            text-align: center;
+        }
+
+
+        a {
+            color: #008a75;
+            text-decoration: none;
+            transition: 0.5s;
+        }
+        
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#fullpage').fullpage({
+                anchors: ['Welcome', 'Education', 'Professions', 'Internship', 'JobsPreferred', 'Projects'],
+                sectionsColor: ['#d2d8de', '#d2d8de', '#d2d8de','#d2d8de','#d2d8de', '#d2d8de' ],
+                navigation: true,
+                navigationPosition: 'right',
+                navigationTooltips: ['Welcome', 'Education', 'Professions', 'Internship', 'JobsPreferred', 'Projects'],
+
+                onLeave: function(index, nextIndex, direction){
+                    if(nextIndex == 3) {
+
+                        var totalWidth = $(".skill_back_rect").width();
+                        $(".skill_front_rect").each(function(){
+                            var progress = $(this).attr("progress");
+                            $(this).animate({
+                                "width" : totalWidth * progress
+                            }, 2000);
+                        });
+                    }
+
+                    if(index == 3) {
+                        console.log("Hello");
+                        $(".skill_front_rect").each(function(){
+                            $(this).css("width", "0px");
+                            console.log($(this).width());
+                        });
+                    }
+                }
+            });
+
+
+
+        });
+
+    </script>
+</head>
+<body>
+    <div id="fullpage">
+        <div class="section " id="section0">
+            <p id="my_resume">My Resume</p>
+            <img src="images/acatar.jpg">
+            <h1>Edison Gao</h1>
+            <p class="subtitle">A Passionate, Creative, and Devoted</p>
+            <h3>Web Front-End Designer & Developer</h3>
+            <a href="937907032@qq.com">937907032@qq.com</a>
+        </div>
+        <div class="section" id="section1">
+
+            <h1>Education</h1>
+            <div style="margin:20px;">
+                <p class="subtitle">Undergraduate student at Sun Yat-sen University</p>
+                <p class="subtitle">Major in Software Engineering</p>
+            </div>
+            <div style="margin:10px;">
+                <h4>Master student at Carnegie Mellon University</h4>
+                <h4>Major in Computer Engineering</h4>
+            </div>
+            <h3>Expected to graduate on <strong class="emphasize">May, 2016</strong></h3>
+        </div>
+        <div class="section" id="section2">
+            <h1>Professions</h1>
+            <div id="skills_list">
+                <table>
+                    <tr>
+                        <td class="skill_name">C++</td>
+                        <td>
+                            <div class="skill_rect">
+                                <div class="skill_back_rect"></div>
+                                <div class="skill_front_rect" progress="0.92"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="skill_name">Java</td>
+                        <td>
+                            <div class="skill_rect">
+                                <div class="skill_back_rect"></div>
+                                <div class="skill_front_rect" progress="0.9"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="skill_name">PHP</td>
+                        <td>
+                            <div class="skill_rect">
+                                <div class="skill_back_rect"></div>
+                                <div class="skill_front_rect" progress="0.85"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="skill_name">Javascript</td>
+                        <td>
+                            <div class="skill_rect">
+                                <div class="skill_back_rect"></div>
+                                <div class="skill_front_rect" progress="0.8"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="skill_name">C#</td>
+                        <td>
+                            <div class="skill_rect">
+                                <div class="skill_back_rect"></div>
+                                <div class="skill_front_rect" progress="0.7"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="skill_name">SQL</td>
+                        <td>
+                            <div class="skill_rect">
+                                <div class="skill_back_rect"></div>
+                                <div class="skill_front_rect" progress="0.5"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        <div class="section" id="section3">
+            <h1>Internship</h1>
+            <div>
+                <div style="margin:20px">
+                    <h3>July,2012 - Oct,2012</h3>
+                    <p class="subtitle">International Business Department, Tencent</p>
+                    <h4>As a Web Developer</h4>
+                    <p class="related_tech">Related Technology: PHP, MySQL, Javascript, JQuery, MongoDB, Memcache</p>
+                </div>
+                <div style="margin:20px">
+                    <h3>July,2014 - Aug, 2014</h3>
+                    <p class="subtitle">Jade Studio, Tencent</p>
+                    <h4>As a Game Developer</h4>
+                    <p class="related_tech">Related Technology: Unity3D, HLSL/Cg, Physically Based Rendering</p>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section4">
+            <h1>Jobs Preferred</h1>
+            <div>
+                <div>
+                    <h3>Graphics Programmer</h3>
+                    <h3>GamePlay Programmer</h3>
+                    <h3>Technical Artist</h3>
+                </div>
+                <p class="subtitle">(Either a big video-game company or a pioneering group is welcome to hire me)</p>
+            </div>
+        </div>
+        <div class="section" id="section5">
+            <h1>Projects</h1>
+            <div class="row">
+                <div class="col-2 center">
+                    <img src="images/gamefinal.jpg" width="128px;">
+                </div>
+                <div class="col-4">
+                    <h2>
+                        <a href="https://github.com/woyaofacai/GameFinal" target="_blank">GameFinal</a>
+                    </h2>
+                </div>
+                <div class="col-2 center">
+                    <img src="images/gamefinal.jpg" width="128px;">
+                </div>
+                <div class="col-4">
+                    GameFinal
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

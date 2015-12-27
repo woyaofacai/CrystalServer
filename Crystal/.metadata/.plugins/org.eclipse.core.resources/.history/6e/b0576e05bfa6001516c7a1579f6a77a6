@@ -1,0 +1,37 @@
+package com.crystal.servlet;
+
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+
+public class ServletConfigImpl implements ServletConfig {
+
+	private String name;
+	private Map<String, String> parameters = new HashMap<String, String>();
+	
+	
+	
+	@Override
+	public String getInitParameter(String arg0) {
+		return null;
+	}
+
+	@Override
+	public Enumeration getInitParameterNames() {
+		return null;
+	}
+
+	@Override
+	public ServletContext getServletContext() {
+		return null;
+	}
+
+	@Override
+	public String getServletName() {
+		return null;
+	}
+
+}

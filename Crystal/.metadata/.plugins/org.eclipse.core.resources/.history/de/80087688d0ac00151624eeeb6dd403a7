@@ -1,0 +1,28 @@
+package com.crystal.servlet;
+
+import java.net.MalformedURLException;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.crystal.servlet.impl.ServletContextImpl;
+
+public class ServletContainer {
+	
+	private Map<String, ServletContextImpl> contexts = new HashMap<String, ServletContextImpl>();
+	
+	public ServletContainer() {
+		
+		String[] appNames = new String[] {"HelloWorld"};
+		
+		for(int i = 0; i < appNames.length; i++) {
+			try {
+				ServletContextImpl context = new ServletContextImpl(appNames[i]);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}	
+		}
+		
+	}
+
+	
+}

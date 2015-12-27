@@ -1,0 +1,31 @@
+package com.crystal.servlet;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.crystal.servlet.impl.ServletContextImpl;
+
+public class ServletContainer {
+
+	private Map<String, ServletContextImpl> contexts = new HashMap<String, ServletContextImpl>();
+
+	public ServletContainer() {
+
+		String[] appNames = new String[] { "HelloWorld" };
+
+		for (int i = 0; i < appNames.length; i++) {
+			ServletContextImpl context = new ServletContextImpl(appNames[i]);
+			context.init();
+			contexts.put(appNames[i], context);
+		}
+	}
+	
+	public void destroy() {
+		for(Map.Entry<String, ServletContextImpl> e : contexts.entrySet()) {
+			
+		}
+	}
+	
+	
+	
+}

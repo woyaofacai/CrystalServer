@@ -1,0 +1,53 @@
+package com.test;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletException;
+
+import org.dom4j.DocumentException;
+
+import com.crystal.conf.WebConfiguration;
+import com.crystal.servlet.ServletContainer;
+import com.crystal.servlet.ServletManager;
+import com.crystal.servlet.impl.ServletManagerImpl;
+
+public class Test {
+	public static void main(String[] args) throws ServletException, IOException {
+//		Scanner scanner = new Scanner(System.in);
+//		ServletManager mgr = new ServletManagerImpl("HelloWorld");
+//		WebConfiguration config = new WebConfiguration("HelloWorld", mgr);
+//		config.init();
+//		mgr.init();
+//		
+//		while (true) {
+//			String url = scanner.next();
+//			if("quit".equals(url))
+//				break;
+//			
+//			Servlet servlet = mgr.getServletByURL(url);
+//			if (servlet != null) {
+//				servlet.service(null, null);
+//			}
+//		}
+//		scanner.close();
+//		mgr.destroy();
+		
+		ServletContainer container = ServletContainer.getInstance();
+		
+		Scanner scanner = new Scanner(System.in);
+		while(true) {
+			String url = scanner.next();
+			if("quit".equals(url))
+				break;
+			if(!container.process(url)) {
+				System.out.println("")
+			}
+			
+		}
+		
+		container.destroy();
+	}
+
+}

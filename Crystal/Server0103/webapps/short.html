@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EdisonGao - Carnegie Mellon University</title>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+    <!--
+    <script src="//use.edgefonts.net/open-sans:n3,i3,n4,i4,n6,i6,n7,i7,n8,i8.js"></script>
+    <script src="//use.edgefonts.net/open-sans-condensed:n3,i3,n7.js"></script>
+    <script src="//use.edgefonts.net/league-gothic:n4.js"></script>
+       -->
+    <style>
+        #root_div {
+            font-family: arial,helvetica;
+            padding-bottom: 20px;
+        }
+
+        #content_container {
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .title {
+            font-family: arial,helvetica;
+            font-size: 48pt;
+            line-height: 54pt;
+            font-weight: 700;
+            
+        }
+
+        h1 {
+            font-size: 60pt;
+            line-height: 54pt;
+        }
+
+        #basic_info_div {
+            padding-top: 5px;
+        }
+
+        .main_text {
+            font-family: arial,helvetica;
+            font-size: 16pt;
+            color: #404040;
+        }
+
+        .profile {
+            font-family: arial,helvetica;
+            font-size: 16pt;
+            color: #404040;
+        }
+
+        .sub_info {
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+
+        #name_title {
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+
+        .education_stage {
+            padding-left: 60px;
+            padding-right: 15px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+        .section {
+            padding-top: 4px;
+        }
+
+        .subtitle_text {
+            font-weight: 700;
+            font-size: 24pt;
+        }
+
+        ul
+        {
+            padding : 2px;
+            padding-left : 40px;
+            margin: 0px;
+        }
+
+        li {
+            font-size: 16px;
+            line-height: 25px;
+            padding-left: 0px;
+            
+        }
+
+        .project_div {
+            padding-left: 20px;
+            padding-bottom : 3px;
+        }
+
+        .project_img {
+            padding-left: 5px;
+            padding-right: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            float: left;
+        }
+
+        .project_title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0px;
+        }
+
+        .project_sub_title {
+            font-size: 21px;
+        }
+
+        .project_main_text {
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        body a {
+            color: #000000;
+            text-decoration: underline;
+        }
+
+        .term_title
+        {
+            font-size:20px;
+            font-weight:700;
+            margin:0px;
+        }
+
+        .date_text 
+        {
+            float:right;
+            padding-right:30px;
+            font-weight: 200;
+        }
+
+        body a:hover {
+            color: #808080;
+            text-decoration: underline;
+        }
+
+        .skill_name {
+            width: 80px;
+            font-size: 16px;
+            text-align: right;
+            font-family: arial, helvetica;
+            margin:0;
+            font-weight:600;
+        }
+
+        .skill_rect {
+            position: relative;
+        }
+
+        .skill_back_rect {
+            border-radius: 15px;
+            background: rgb(235, 235, 235);
+            padding: 0px;
+            width: 250px;
+            height: 22px;
+            margin-left: 12px;
+        }
+
+        .skill_front_rect {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            border-radius: 15px 0px 0px 15px;
+            padding: 0px;
+            width: 0px;
+            height: 22px;
+            margin-left: 12px;
+            background: rgb(3, 3, 3);
+        }
+
+
+
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $(".skill_front_rect").each(function () {
+                var progress = $(this).attr("progress");
+                $(this).width(250 * progress);
+                $(this).css({
+                    "width": 250 * progress
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="root_div"> 
+        <div id="content_container">
+            <div id="basic_info_div">
+                <div class="profile" style="padding-top:5px;float:right;">
+                    <div class="sub_info"><i class="fa fa-internet-explorer"></i> &nbsp;andrew.cmu.edu/user/yg1</div>
+                    <div class="sub_info"><i class="fa fa-envelope-square"></i> &nbsp;937907032@qq.com</div>
+                    <div class="sub_info"><i class="fa fa-phone-square"></i> &nbsp;412-209-9529</div>
+                </div>
+
+                <div id="name_title" class="title">
+                    <div>EDISON GAO</div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+
+            <div id="education_background" class="section" style="padding-top:10px; line-height:20pt;">
+                <div class="subtitle_text"><i class="fa fa-graduation-cap fa-1.5x"></i> EDUCATION</div>
+                <hr />
+                <div class="education_stage">
+                    <div class="term_title">CARNEGIE MELLON UNIVERSITY<div class="date_text">AUGUST 2014 - PRESENT</div></div>
+                    <div>Major: Computer Engineering   &nbsp;&nbsp;&nbsp;GPA: 3.7/4.0</div>
+                </div>
+                <div class="education_stage">
+                    <div class="term_title">SUN YAT-SEN UNIVERSITY<div class="date_text">SEPTEMBER 2009 - JUNE 2013</div></div>
+                    <div>Major: Software Engineering  &nbsp;&nbsp;&nbsp;GPA: 4.1/5.0</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="subtitle_text"><i class="fa fa-briefcase fa-1.5x"></i>  INTERNSHIP</div>
+                <hr />
+                <ul>
+                    <li>
+                        <strong>July,2012 - Oct,2012, Tencent. </strong>
+                            Tencent is the largest and most famous Internet enterprise in China.
+                        I worked in its International Business Department as a web programmer.
+                    </li>
+                    <li>
+                        <strong>July,2014 - Aug, 2014, Tencent. </strong>
+                        It is the second time that I participated in the internship in Tecent. This time I worked in
+                         Jade Studio(Interactive Entertainment Department) as a game programmer.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <div class="subtitle_text"><i class="fa fa-github-square fa-1.5x"></i> PROJECTS</div>
+                <hr/>
+                <div>
+                    <div class="project_div">
+                        <div class="term_title">
+                            GameFinal
+                        </div>
+                        <div class="project_main_text">
+                            GameFinal is an open-source 3D Game Engine and is written in C++ and totally based on DirectX11. The modules that I have developed include:
+                            scene and light management, skinning animation, cascade shadow mapping, geometry instancing, terrain system, deferred shading,
+                            anti-aliasing, post-processing, etc. 
+                        </div>
+                    </div>
+
+                    <div class="project_div">
+                        <div class="project_title">
+                            LoveTree (iqshu.com)
+                        </div>
+                        <div class="project_main_text">
+                            LoveTree is the first loving website for college students in China. I'm one of the two founders of this website.
+                            Our goal is to help college students make more friends of the opposite sex,
+                            even find their boyfriend or girlfriend successfully. The website is only open to SYSU students.
+                        </div>
+                    </div>
+
+                    <div class="project_div">
+                        <div class="project_title">Ocean Planet II</div>
+                        <div class="project_main_text">
+                            Ocean Planet is an 2D casual game. Players' task is to catch as many fish as possible.
+                            Players could challenge different levels and missions, in which have different weapons and props.
+                        </div>
+                    </div>
+
+                    <div class="project_div">
+                        <div class="project_title">YMX2D</div>
+                        <div class="project_main_text">
+                            YMD2D is a light-weight 2D game engine. My goal is help developers make games more easily and organize their projects in
+                            a flexible way. YMX2D provides both C++ and Lua interfaces for programmers to use.
+                        </div>
+                    </div>
+
+                    <div class="project_div">
+                        <p style="margin:1px;">
+                            <span class="project_title">Let's Team: </span>
+                            <span class="project_main_text">
+                                &nbsp;A website for college students to form and organize a team.
+                            </span>
+                        </p>
+                        <p style="margin:1px;">
+                            <span class="project_title">Chinese Word Puzzle: </span>
+                            <span class="project_main_text">
+                                A 2D puzzle game abount Chinese Words, implemented in Javascript
+                            </span>
+                        </p>
+                        <p style="margin:1px;">
+                            <span class="project_title">CUDA Ray Tracer:</span>
+                            <span class="project_main_text">
+                                A small ray tracer implemented in C++, OpenMP and CUDA.
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" style="padding-top: 10px;">
+                <div style="margin-left:10px; padding-left:40px;float:right; width:370px;">
+                    <div class="subtitle_text"><i class="fa fa-cog fa-1.5x"></i> SKILLS</div>
+                    <hr style="width: 300px; margin-left: 0;" />
+
+                    <div id="skills_list">
+                        <table>
+                            <tr>
+                                <td class="skill_name">C++</td>
+                                <td>
+                                    <div class="skill_rect">
+                                        <div class="skill_back_rect"></div>
+                                        <div class="skill_front_rect" progress="0.87"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="skill_name">Java</td>
+                                <td>
+                                    <div class="skill_rect">
+                                        <div class="skill_back_rect"></div>
+                                        <div class="skill_front_rect" progress="0.85"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="skill_name">PHP</td>
+                                <td>
+                                    <div class="skill_rect">
+                                        <div class="skill_back_rect"></div>
+                                        <div class="skill_front_rect" progress="0.78"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="skill_name">Javascript</td>
+                                <td>
+                                    <div class="skill_rect">
+                                        <div class="skill_back_rect"></div>
+                                        <div class="skill_front_rect" progress="0.70"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="skill_name">C#</td>
+                                <td>
+                                    <div class="skill_rect">
+                                        <div class="skill_back_rect"></div>
+                                        <div class="skill_front_rect" progress="0.60"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+
+                        </table>
+                    </div>
+
+                </div>
+
+                <div style="margin-right: 10px; width:380px;">
+                    <div class="subtitle_text"><i class="fa fa-trophy fa-1.5x"></i> HONORS</div>
+                    <hr style="width: 300px; margin-left: 0;" />
+                    <ul style="padding-left:20px;">
+                        <li><strong>09/2009 - 07/2010, </strong>First-Prize SYSU Scholarship</li>
+                        <li><strong>09/2010 - 07/2011, </strong>Third-Prize SYSUScholarship</li>
+                        <li><strong>09/2011 - 07/2012, </strong>Third-Prize SYSU Scholarship</li>
+                        <li><strong>10/2011, </strong>Top-Prize of SYSU Software Innovation Contest</li>
+                        <li><strong>08/2010, </strong>Third-Prize of Citi Financial Software Development Contest</li>
+                    </ul>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+package com.crystal.util;
+
+import java.util.Enumeration;
+
+public class Enumerator implements Enumeration {
+
+	@Override
+	public boolean hasMoreElements() {
+		return false;
+	}
+
+	@Override
+	public Object nextElement() {
+		return null;
+	}
+
+}

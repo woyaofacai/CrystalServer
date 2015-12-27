@@ -1,0 +1,44 @@
+package com.crystal.servlet;
+
+import java.util.Enumeration;
+import java.util.Map;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+
+import com.crystal.util.Enumerator;
+
+public class ServletConfigImpl implements ServletConfig {
+
+	private String name;
+	private Map<String, String> parameters;
+	private ServletContext context;
+	
+	public ServletConfigImpl(String name, Map<String, String> parameters,
+			ServletContext context) {
+		this.name = name;
+		this.parameters = parameters;
+		this.context = context;
+	}
+
+	@Override
+	public String getInitParameter(String name) {
+		return parameters.get(name);
+	}
+
+	@Override
+	public Enumeration getInitParameterNames() {
+		return new Enumerator(parameters.keySet());
+	}
+
+	@Override
+	public ServletContext getServletContext() {
+		return context;
+	}
+
+	@Override
+	public String getServletName() {
+		return name;
+	}
+
+}

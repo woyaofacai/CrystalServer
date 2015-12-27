@@ -1,0 +1,8 @@
+package com.crystal.servlet;
+
+public class ServletContainer {
+	
+	private Map<String, ServletContextImpl> contexts = new HashMap<String, ServletContextImpl>();
+	
+	
+}
